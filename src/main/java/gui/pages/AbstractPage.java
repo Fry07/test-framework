@@ -18,19 +18,21 @@ public class AbstractPage {
     //
     // WebElements
     //
-    @FindBy(xpath = "//ul[@id='navigation']")
+    private static final String NAVIGATION_MENU = "//ul[@id='navigation']";
+
+    @FindBy(xpath = NAVIGATION_MENU)
     protected WebElement navigationMenu;
 
-    @FindBy(xpath = "//ul[@id='navigation']//a[.='Numbers']")
+    @FindBy(xpath = NAVIGATION_MENU + "//a[.='Numbers']")
     private WebElement numbersMenu;
 
-    @FindBy(xpath = "//ul[@id='navigation']//a[.='Numbers']//following::a[.='Integers']")
+    @FindBy(xpath = NAVIGATION_MENU + "//a[.='Numbers']//following::a[.='Integers']")
     private WebElement integersMenuItem;
 
-    @FindBy(xpath = "//ul[@id='navigation']//a[.='Lists & More']")
+    @FindBy(xpath = NAVIGATION_MENU + "//a[.='Lists & More']")
     private WebElement listsAndMoreMenu;
 
-    @FindBy(xpath = "//ul[@id='navigation']//a[.='Lists & More']//following::a[.='Strings']")
+    @FindBy(xpath = NAVIGATION_MENU + "//a[.='Lists & More']//following::a[.='Strings']")
     private WebElement stringsMenuItem;
 
     @FindBy(xpath = "//button[.='Allow Selected']")

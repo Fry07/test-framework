@@ -7,7 +7,10 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.time.Duration;
+import java.util.Properties;
 
 
 public class BaseTest {
@@ -15,13 +18,21 @@ public class BaseTest {
     private final WebDriverWait wait;
     private final WebDriver webDriver;
     Logger logger = LoggerFactory.getLogger(BaseTest.class);
-
-    private static final String BASE_URL = "https://www.random.org/";
+    FileInputStream fileInputStream;
+    Properties properties = new Properties();
 
     @Before
     public void setUp() {
-        webDriver.get(BASE_URL);
-        log(String.format("Opened %s page", BASE_URL));
+        try {
+            fileInputStream = new FileInputStream("src/main/resources/properties/gui_config.properties");
+            properties.load(fileInputStream);
+
+            String baseUrl = properties.getProperty("baseUrl");
+            webDriver.get(baseUrl);
+            log(String.format("Opened %s page", baseUrl));
+        } catch (IOException e) {
+            System.err.println("Properties file was not found");
+        }
     }
 
     @After
