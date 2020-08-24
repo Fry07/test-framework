@@ -26,7 +26,6 @@ public class BaseTest {
         try {
             fileInputStream = new FileInputStream("src/main/resources/properties/gui_config.properties");
             properties.load(fileInputStream);
-
             String baseUrl = properties.getProperty("baseUrl");
             webDriver.get(baseUrl);
             log(String.format("Opened %s page", baseUrl));
