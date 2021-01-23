@@ -4,20 +4,19 @@ import org.junit.After;
 import org.junit.Before;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.time.Duration;
 import java.util.Properties;
 
+import static common.Log.log;
+
 
 public class BaseTest {
 
     private final WebDriverWait wait;
     private final WebDriver webDriver;
-    Logger logger = LoggerFactory.getLogger(BaseTest.class);
     FileInputStream fileInputStream;
     Properties properties = new Properties();
 
@@ -26,7 +25,7 @@ public class BaseTest {
         try {
             fileInputStream = new FileInputStream("src/main/resources/properties/gui_config.properties");
             properties.load(fileInputStream);
-            String baseUrl = properties.getProperty("baseUrl");
+            String baseUrl = properties.getProperty("baseUrlGui");
             webDriver.get(baseUrl);
             log(String.format("Opened %s page", baseUrl));
         } catch (IOException e) {
@@ -73,14 +72,5 @@ public class BaseTest {
      */
     public void closeDriver() {
             webDriver.quit();
-    }
-
-    /**
-     * Log info message
-     *
-     * @param logMessage
-     */
-    public void log(String logMessage) {
-        logger.info(logMessage);
     }
 }
