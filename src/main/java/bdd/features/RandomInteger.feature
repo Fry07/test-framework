@@ -3,7 +3,7 @@ Feature: Random Integer
 
   Background:
     Given Open Chrome Browser
-    When Open Random Integer main page
+    When Open Random main page
 
   Scenario: Check random integers generator
     Given Open Random Integer page

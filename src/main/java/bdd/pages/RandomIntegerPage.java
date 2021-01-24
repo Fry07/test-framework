@@ -1,6 +1,6 @@
 package bdd.pages;
 
-import bdd.stepdefinitions.BaseTest;
+import bdd.runner.BaseTest;
 import gui.attributes.RandomIntegerAttributes;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;

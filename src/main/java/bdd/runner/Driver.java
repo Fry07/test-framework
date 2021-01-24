@@ -1,4 +1,4 @@
-package bdd.stepdefinitions;
+package bdd.runner;
 
 import org.apache.log4j.BasicConfigurator;
 import org.openqa.selenium.WebDriver;

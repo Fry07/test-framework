@@ -1,4 +1,4 @@
-package bdd.stepdefinitions;
+package bdd.runner;
 
 import org.junit.After;
 import org.openqa.selenium.WebDriver;
