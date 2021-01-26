@@ -1,11 +1,13 @@
 package gui;
 
+import common.RunBrowser;
 import gui.attributes.RandomIntegerAttributes;
 import gui.pages.AbstractPage;
 import gui.pages.RandomIntegerGeneratorPage;
 import gui.pages.RandomIntegerGeneratorResultsPage;
 import gui.pages.RandomStringGeneratorPage;
 import gui.runner.BaseTest;
+import gui.runner.Browser;
 import org.junit.Test;
 
 import java.io.IOException;
@@ -16,6 +18,7 @@ import static common.Log.log;
 public class RandomIntegerTest extends BaseTest {
 
     @Test
+    @RunBrowser(browser = Browser.CHROME)
     public void randomIntegerPositiveTest() throws IOException {
         // Open random.org page
         AbstractPage abstractPage = new AbstractPage(this);

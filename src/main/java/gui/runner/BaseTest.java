@@ -1,5 +1,6 @@
 package gui.runner;
 
+import common.RunBrowser;
 import org.junit.After;
 import org.junit.Before;
 import org.openqa.selenium.WebDriver;
@@ -7,6 +8,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.lang.reflect.Method;
 import java.time.Duration;
 import java.util.Properties;
 
@@ -42,7 +44,21 @@ public class BaseTest {
      * Constructor
      */
     public BaseTest() {
-        Driver driver = Driver.getInstance(Browser.CHROME);
+        // default browser
+       Browser browser = Browser.FIREFOX;
+
+        try {
+            for (Method method : BaseTest.class.getClassLoader().loadClass("gui.RandomIntegerTest").getMethods()) {
+                if (method.isAnnotationPresent(common.RunBrowser.class)) {
+                    RunBrowser runBrowser = method.getAnnotation(RunBrowser.class);
+                    browser = runBrowser.browser();
+                }
+            }
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        Driver driver = Driver.getInstance(browser);
         webDriver = driver.getDriver();
 
         webDriver.manage().window().maximize();
