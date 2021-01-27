@@ -83,6 +83,15 @@ public class AbstractPage {
     }
 
     /**
+     * Wait till element is invisible
+     *
+     * @param element
+     */
+    protected void waitTillElementIsInvisible(WebElement element) {
+        testClass.getWait().until(ExpectedConditions.invisibilityOf(element));
+    }
+
+    /**
      * Populate text to WebElement
      *
      * @param element
@@ -150,6 +159,7 @@ public class AbstractPage {
             waitTillElementIsVisible(menuElement);
             actions.moveToElement(menuElement).perform();
             actions.click().perform();
+            waitTillElementIsInvisible(menuElement);
         }
     }
 }

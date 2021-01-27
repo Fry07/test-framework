@@ -30,10 +30,6 @@ public class AbstractPage {
      */
     public AbstractPage(BaseTest testClass) {
         PageFactory.initElements(testClass.getWebDriver(), this);
-        //waitTillElementIsVisible(navigationMenu);
-//        if (!cookiesAccepted) {
-//            clickAllowSelected();
-//        }
     }
 
     /**
@@ -70,7 +66,6 @@ public class AbstractPage {
      * @param text
      */
     protected void typeIn(WebElement element, String text) {
-        //waitTillElementIsVisible(element);
         element.clear();
         element.sendKeys(text);
     }

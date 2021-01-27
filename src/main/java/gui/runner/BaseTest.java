@@ -60,7 +60,7 @@ public class BaseTest {
 
         Driver driver = Driver.getInstance(browser);
         webDriver = driver.getDriver();
-
+        webDriver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         webDriver.manage().window().maximize();
         wait = new WebDriverWait(webDriver, Duration.ofSeconds(10));
     }
